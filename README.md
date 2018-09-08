@@ -1,10 +1,15 @@
 # ws-btf-project
 
 created boilderplate with create-react-app
+
 added react, react-redux, and react-router
+
 created custom components
+
 imported material UI for react
+
 created static data
+
 
 # to run
 
