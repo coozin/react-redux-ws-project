@@ -1,9 +1,23 @@
 import React from 'react';
-// import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-
 import MenuIcon from '@material-ui/icons/Menu';
+
+import { Route } from 'react-router-dom'
+
+const CustMenuItem = ({ onClick, link, text }) => (
+  <Route render={({ history }) => (
+    <MenuItem
+      type='button'
+      onClick={() => {
+        onClick()
+        history.push(link)
+      }}
+    >
+      { text }
+    </MenuItem> )}
+  />
+)
 
 class SimpleMenu extends React.Component {
   state = {
@@ -34,9 +48,9 @@ class SimpleMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>Tickers</MenuItem>
-          <MenuItem onClick={this.handleClose}>Trading</MenuItem>
-          <MenuItem onClick={this.handleClose}>Orderbook</MenuItem>
+          <CustMenuItem onClick={this.handleClose} link='/tickerTable' text='Tickers' />
+          <CustMenuItem onClick={this.handleClose} link='/orderbook' text='Orderbook' />
+          <CustMenuItem onClick={this.handleClose} link='/trades' text='Trades' />
         </Menu>
       </div>
     );

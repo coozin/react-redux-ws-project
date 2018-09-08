@@ -11,9 +11,6 @@ const styles = {
   root: {
     flexGrow: 1,
   },
-  flex: {
-    flexGrow: 1,
-  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
@@ -29,7 +26,7 @@ function ButtonAppBar(props) {
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <Menu />
           </IconButton>
-          <Typography variant="title" color="inherit" className={classes.flex}>
+          <Typography variant="title" color="inherit" >
             Using Bitfinex API
           </Typography>
         </Toolbar>
