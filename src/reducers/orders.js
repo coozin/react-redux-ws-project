@@ -1,6 +1,6 @@
 export default (state = {}, action) => {
   switch (action.type) {
-    case 'SIMPLE_ACTION':
+    case 'ADD_ORDER':
     return {
       result: action.payload
     }
