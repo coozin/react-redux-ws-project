@@ -10,51 +10,56 @@ import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    width: 'calc(100% - 100px)',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
+    margin: 50,
   },
   table: {
     minWidth: 700,
   },
 });
 
-function createData(tickerName, last, dayChange, volume) {
-  return { tickerName, last, dayChange, volume };
+function createData(time, price, amount) {
+  return { time, price, amount };
 }
 
 const rows = [
-  createData('BTC', 159, 6.0, 24),
-  createData('ETH', 237, 9.0, 37),
-  createData('EOS', 262, 16.0, 24),
-  createData('BCH', 305, 3.7, 67),
-  createData('NEO', 356, 16.0, 49),
+  createData("14:38:15", 203.31, 9.9865),
+  createData("14:38:15", 203.31, 9.9865),
+  createData("14:38:15", 203.31, 9.9865),
+  createData("14:38:15", 203.31, 9.9865),
+  createData("14:38:15", 203.31, 9.9865),
+  createData("14:38:15", 203.31, 9.9865),
+  createData("14:38:15", 203.31, 9.9865),
+  createData("14:38:15", 203.31, 9.9865),
 ];
 
 function SimpleTable(props) {
   const { classes } = props;
+
+  let id = 0;
 
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>NAME</TableCell>
-            <TableCell numeric>LAST</TableCell>
-            <TableCell numeric>24HR</TableCell>
-            <TableCell numeric>VOL</TableCell>
+            <TableCell>TIME</TableCell>
+            <TableCell numeric>PRICE</TableCell>
+            <TableCell numeric>AMOUNT</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map(row => {
+            id++;
             return (
-              <TableRow key={row.id}>
+              <TableRow key={`trade_` + id}>
                 <TableCell component="th" scope="row">
-                  {row.tickerName}
+                  {row.time}
                 </TableCell>
-                <TableCell numeric>{row.last}</TableCell>
-                <TableCell numeric>{row.dayChange}</TableCell>
-                <TableCell numeric>{row.volume}</TableCell>
+                <TableCell numeric>{row.price}</TableCell>
+                <TableCell numeric>{row.amount}</TableCell>
               </TableRow>
             );
           })}

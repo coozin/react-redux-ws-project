@@ -38,6 +38,8 @@ const rows = [
 function SimpleTable(props) {
   const { classes } = props;
 
+  let id = 0;
+
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -55,8 +57,9 @@ function SimpleTable(props) {
         </TableHead>
         <TableBody>
           {rows.map(row => {
+            id++;
             return (
-              <TableRow key={row.id}>
+              <TableRow key={`orders_` + id}>
                 <TableCell numeric>{row.countBuy}</TableCell>
                 <TableCell numeric>{row.amountBuy}</TableCell>
                 <TableCell numeric>{row.totalBuy}</TableCell>

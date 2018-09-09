@@ -1,6 +1,6 @@
 # ws-btf-project
 
-created boilderplate with create-react-app
+created project with create-react-app boilerplate
 
 added react, react-redux, and react-router
 
@@ -20,4 +20,8 @@ created static data
 `npm install` or `yarn`
 
 `npm run start` or `yarn start`
+
+Open web browser and go to `localhost:3000`
+
+*Special note:* Running this from a linux OS may require `sudo yarn start` or `sudo npm run start`
 
