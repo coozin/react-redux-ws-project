@@ -11,7 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 // Utilities
-
+import WebSocketComponent from './WebsocketComponent';
 
 const styles = theme => ({
   root: {
@@ -70,6 +70,7 @@ function SimpleTable(props) {
           })}
         </TableBody>
       </Table>
+      <WebSocketComponent />
     </Paper>
   );
 }

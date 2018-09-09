@@ -1,3 +1,5 @@
+// doesn't work without global WebSocket import
+
 const Sockette = require('sockette');
 
 const ws = new Sockette('wss://api.bitfinex.com/ws/2', {
