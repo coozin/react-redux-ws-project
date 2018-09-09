@@ -10,13 +10,23 @@ class ProductDetail extends React.Component {
 
   handleData(data) {
     console.log('handleData')
-    let result = JSON.parse(data);
-    console.log(result)
+    if (data) { 
+      let result = JSON.parse(data);
+      console.log(result)
+    } else {
+      console.log('no data in message')
+    }
+    
   }
 
   handleOpen(data) {
     console.log('handleOpen')
-    console.log(data)
+    if (data) {
+      let result = JSON.parse(data);
+      console.log(result)
+    } else {
+      console.log('no data in open')
+    }
   }
 
   render() {

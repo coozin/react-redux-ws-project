@@ -10,8 +10,25 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-// Utilities
-import WebSocketComponent from './WebsocketComponent';
+import Stomp from 'stompjs';
+import SockJS from 'sockjs-client';
+
+
+function websocket(subsribeUrl, ArrayOfChannels) {
+
+  const socket = SockJS(subsribeUrl); //create wrapper
+  const stompClient = Stomp.over(socket); //connect using your client
+
+  stompClient.connect({}, () => {
+    ArrayOfChannels.forEach((channel) => {
+      stompClient.subscribe(channel.route, channel.callback);
+    });
+  }, () => {
+    setTimeout(() => {
+      console.log(subsribeUrl, ArrayOfChannels)
+    }, 0);
+ });   
+}
 
 const styles = theme => ({
   root: {
@@ -45,6 +62,10 @@ function SimpleTable(props) {
 
   let id = 0;
 
+  websocket('wss://api.bitfinex.com/ws/2', [
+    'trades'
+  ]);
+
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -70,7 +91,6 @@ function SimpleTable(props) {
           })}
         </TableBody>
       </Table>
-      <WebSocketComponent />
     </Paper>
   );
 }
